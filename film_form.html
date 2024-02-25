@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<html lang="cs">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Přidání nového filmu</title>
+    <meta name="author" content="Luk Cogito">
+    <meta content="Zobrazení seznamu filmů z csv souboru do formátované html stránky.">
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
+
+    <style>
+        body {    
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 50vh;
+            margin: 0;
+            font-size: 1.0vw;
+        }
+        footer {
+            bottom: 1vh;
+            font-size: 0.8vw;
+        }
+        img {
+             position: fixed;
+             bottom: 0vw;
+        
+        }
+       #content {
+            flex: 2;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        #left {
+            flex: 1;
+            background: url('https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fclipart-library.com%2Fimg1%2F1396700.png&f=1&nofb=1&ipt=809d5986196eb0d139806de032bed9a075ef0ac0ef113d06c8d630099d0975e1&ipo=images') left center / auto 100% no-repeat;
+        }
+        #right {
+            flex: 1;
+            background: url('https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fclipart-library.com%2Fimg1%2F1396700.png&f=1&nofb=1&ipt=809d5986196eb0d139806de032bed9a075ef0ac0ef113d06c8d630099d0975e1&ipo=images') right center / auto 100% no-repeat;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div>
+        <h1>Přidání nového filmu</h1>
+        <br />
+        <form id="form" action="save.php" method="post">
+            <label for="link">Zadejte odkaz z <a target="_blank" href="https://www.imdb.com/?ref_=nv_home">IMDb</a> na film, který si přejete přidat:</label>
+            <input type="text" id="link" name="link">
+            <input type="submit" value="Odeslat">
+        </form>
+        <script>
+            function redirect() {
+            setTimeout(function(){ window.location.href = 'http://filmovyklub.zcu.cz'; }, 1000);
+            return true;
+            }
+        </script>
+        <footer>Created and maintained by: <a target="_blank" href="https://github.com/LukCogito">Luk Cogito</a></footer>
+        <img src="vega.gif" alt="Vincent Vega looking for a new movie." title="Vincent Vega looking for a new movie.">
+    </div>
+
+</body>
+</html>

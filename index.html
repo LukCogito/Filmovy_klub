@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Seznam filmů k promítání</title>
+    <meta name="author" content="Derek Eder">
+    <meta content="Zobrazení seznamu filmů z csv souboru do formátované html stránky.">
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
+</head>
+
+<body>
+    <div class="container-fluid">
+        <main class="row">
+            <div class="col">
+                <h1>Seznam filmů k promítání 📽 🎞</h1>
+
+                <p>Seznam <a target="_blank" href="https://www.facebook.com/groups/1994626480740978">privátní sekce Filmového klubu ZČU.</a></p>
+                <p>Klikněte <a href="film_form.html">sem</a> pro přidání nového filmu.</p>
+                </p>
+
+                <div id="table-container"></div>
+            </div>
+        </main>
+        <footer class="row">
+            <div class="col">
+                <hr>
+                <p class="text-right"><a target="_blank" href="https://github.com/derekeder/csv-to-html-table">CSV to HTML Table</a> by
+                    <a target="_blank" href="http://derekeder.com">Derek
+                        Eder</a></p>
+			<p class="text-right">Edited and maintained by <a target="_blank" href="https://github.com/LukCogito">Luk Cogito</a>
+		</p>
+            </div>
+        </footer>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.2.1/js/bootstrap.bundle.min.js"></script>
+    <script src="js/jquery.csv.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+    <script src="js/csv_to_html_table.js"></script>
+    <script>
+	//my custom function that creates a hyperlink
+  	function format_link(link){
+    		if (link)
+      			return "<a href='" + link + "' target='_blank'>" + link + "</a>";
+    		else
+      		return "";
+  	}
+
+	function colorize(value) {
+    		if (value == "True") {
+        		return "<span style='color:green'>" + value + "</span>";
+    		} else if (value == "False") {
+        		return "<span style='color:red'>" + value + "</span>";
+    		} else {
+        		return value;
+    			}
+	}
+
+
+
+      //initializing the table
+CsvToHtmlTable.init({
+    csv_path: 'data/filmy.csv',
+    element: 'table-container',
+    allow_download: true,
+    csv_options: {separator: ',', delimiter: '"'},
+    datatables_options: {
+        "paging": false},
+	custom_formatting: [[8, format_link], [6, colorize]]
+});
+
+    </script>
+</body>
+
+</html>
